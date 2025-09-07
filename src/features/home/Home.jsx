@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
-import heroData from "./heroData";
-
-const Hero = () => {
+import HomeData from "./HomeData"
+const Home = () => {
   const [text, setText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const roles = ["Frontend Developer", "React Specialist", "UI/UX Enthusiast", "Problem Solver"];
+  const roles = [
+    "Frontend Developer",
+    "React Specialist",
+    "UI/UX Enthusiast",
+    "Problem Solver",
+  ];
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 50 : 100;
@@ -17,7 +21,7 @@ const Hero = () => {
 
     const typeText = () => {
       const currentRole = roles[currentIndex];
-      
+
       if (isDeleting) {
         setText(currentRole.substring(0, text.length - 1));
         if (text === "") {
@@ -37,14 +41,29 @@ const Hero = () => {
   }, [text, currentIndex, isDeleting, roles]);
 
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/shrutigupta7788", label: "GitHub" },
-    { icon: FaLinkedin, href: "https://www.linkedin.com/in/shruti-gupta-169178305", label: "LinkedIn" },
+    {
+      icon: FaGithub,
+      href: "https://github.com/shrutigupta7788",
+      label: "GitHub",
+    },
+    {
+      icon: FaLinkedin,
+      href: "https://www.linkedin.com/in/shruti-gupta-169178305",
+      label: "LinkedIn",
+    },
     // { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter" },
-    { icon: FaEnvelope, href: "https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com", label: "Email" },
+    {
+      icon: FaEnvelope,
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com",
+      label: "Email",
+    },
   ];
 
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
+    <section
+      id="Home"
+      className="min-h-screen flex flex-col justify-center items-center text-center relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -63,7 +82,7 @@ const Hero = () => {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
         >
-          {heroData.title}
+          {HomeData.title}
         </motion.h1>
 
         <motion.div
@@ -72,7 +91,8 @@ const Hero = () => {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="text-xl md:text-2xl lg:text-3xl font-medium text-blue-600 dark:text-blue-400 mb-6 h-12"
         >
-          I'm a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+          I'm a{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
             {text}
           </span>
           <span className="animate-pulse">|</span>
@@ -84,7 +104,7 @@ const Hero = () => {
           transition={{ delay: 0.6, duration: 0.7 }}
           className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          {heroData.subtitle}
+          {HomeData.subtitle}
         </motion.p>
 
         <motion.div
@@ -158,4 +178,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Home;

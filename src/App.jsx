@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
-import Hero from "./features/hero/Hero";
 import About from "./features/about/About";
 import Skills from "./features/skills/Skills";
 import Projects from "./features/projects/Projects";
 import Contact from "./features/contact/Contact";
+import Home from "./features/home/Home";
 
 const App = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -35,20 +35,33 @@ const App = () => {
       </div>
 
       <Navbar />
-      
-      <main className="">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
+
+      <main>
+        {/* Each section wrapped with an ID for smooth scroll */}
+        <section id="home">
+          <Home />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
         <div className="flex items-center justify-center gap-2 bg-[#101828] px-10">
-        <div className="h-[2px] w-[40%] from-blue-500 to-purple-500 bg-gradient-to-r  rounded-xl top-0"> </div>
-        <p className=" text-white text-center text-[12px]">Thank you for visiting my portfolio.</p>
-        <div className="h-[2px] w-[40%] from-red-500 to-green-500 bg-gradient-to-r  rounded-xl top-10"> </div>
+          <div className="h-[2px] w-[40%] from-blue-500 to-purple-500 bg-gradient-to-r rounded-xl top-0"></div>
+          <p className=" text-white text-center text-[12px]">
+            Thank you for visiting my portfolio.
+          </p>
+          <div className="h-[2px] w-[40%] from-red-500 to-green-500 bg-gradient-to-r rounded-xl top-10"></div>
         </div>
-        <Contact />
-      </main> 
-      
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
+
       <Footer />
 
       {/* Scroll to top button */}

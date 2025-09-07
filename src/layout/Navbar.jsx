@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
-  const links = ["Hero", "About", "Skills", "Projects",  "Contact"];
+  const links = ["Home", "About", "Skills", "Projects",  "Contact"];
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode
