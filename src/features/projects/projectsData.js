@@ -28,14 +28,21 @@ export default [
     featured: false
   },
    
-
-
-   {
-    title: "Portfolio Website",
-    description: "A modern, responsive portfolio website built with React and TailwindCSS.",
-    image: "https://res.cloudinary.com/dbqgtkyyq/image/upload/v1755614301/Protfolio_f7qgfp.png",
-    techStack: ["React", "javascript","TailwindCSS"],
-    liveLink: "https://shruti-s-portfolio-six.vercel.app/",
+  {
+    title: "Login & Register Page",
+    description: "Animated Login and Register Form with blur effect _ Starting Point.",
+    image: "https://res.cloudinary.com/dbqgtkyyq/image/upload/v1757245758/Login_Registration_f3g4ir.png",
+    techStack: ["HTML", "CSS","javascript"],
+    liveLink: "https://login-registration-forms.vercel.app/",
+    githubLink: "https://github.com/shrutigupta7788",
+    featured: false
+  },
+{
+    title: "Sign In & Sign Up Page",
+    description: "Start Project Sign In and Sign Up Page.",
+    image: "https://res.cloudinary.com/dbqgtkyyq/image/upload/v1757245755/Login_Register_tqdd8u.png",
+    techStack: ["HTML", "CSS","javascript"],
+    liveLink: "https://sign-in-sign-up-page-zeta.vercel.app/",
     githubLink: "https://github.com/shrutigupta7788",
     featured: false
   },
