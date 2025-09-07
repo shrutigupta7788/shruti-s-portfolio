@@ -7,7 +7,6 @@ import Hero from "./features/hero/Hero";
 import About from "./features/about/About";
 import Skills from "./features/skills/Skills";
 import Projects from "./features/projects/Projects";
-import Testimonials from "./features/testimonials/Testimonials";
 import Contact from "./features/contact/Contact";
 
 const App = () => {
