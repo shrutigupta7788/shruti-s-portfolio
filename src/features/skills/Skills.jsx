@@ -43,7 +43,8 @@ const Skills = () => {
             Skills & Expertise
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I've developed a diverse skill set through hands-on experience and continuous learning.
+            I've developed a diverse skill set through hands-on experience and
+            continuous learning.
           </p>
         </motion.div>
 
@@ -91,11 +92,11 @@ const Skills = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 transition-colors"
                   >
                     <span className="text-2xl">{skill.icon}</span>
                     <div className="flex-1">
-                      <ProgressBar level={skill.level} skillName={skill.name} />
+                      <ProgressBar level={skill.level} skillName={skill.name} className="w-full"/>
                     </div>
                   </motion.div>
                 ))}
@@ -109,35 +110,40 @@ const Skills = () => {
                   Skill Overview
                 </h4>
                 <div className="space-y-4">
-                  {skillsData[activeCategory].skills.slice(0, 3).map((skill, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.2 }}
-                      className="flex items-center justify-between"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-xl">{skill.icon}</span>
-                        <span className="font-medium text-gray-700 dark:text-gray-300">
-                          {skill.name}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-16 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                            className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
-                          />
+                  {skillsData[activeCategory].skills
+                    .slice(0, 3)
+                    .map((skill, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        className="flex items-center justify-between"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-xl">{skill.icon}</span>
+                          <span className="font-medium text-gray-700 dark:text-gray-300">
+                            {skill.name}
+                          </span>
                         </div>
-                        <span className="text-sm font-bold text-gray-600 dark:text-gray-400 w-8">
-                          {skill.level}%
-                        </span>
-                      </div>
-                    </motion.div>
-                  ))}
+                        <div className="flex items-center gap-2">
+                          <div className="w-16 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${skill.level}%` }}
+                              transition={{
+                                duration: 1,
+                                delay: 0.5 + index * 0.1,
+                              }}
+                              className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                            />
+                          </div>
+                          <span className="text-sm font-bold text-gray-600 dark:text-gray-400 w-8">
+                            {skill.level}%
+                          </span>
+                        </div>
+                      </motion.div>
+                    ))}
                 </div>
               </div>
             </div>
@@ -157,7 +163,8 @@ const Skills = () => {
               Always Learning & Growing
             </h3>
             <p className="text-blue-100 max-w-2xl mx-auto">
-              I'm constantly expanding my skill set and staying up-to-date with the latest technologies and best practices in web development.
+              I'm constantly expanding my skill set and staying up-to-date with
+              the latest technologies and best practices in web development.
             </p>
           </div>
         </motion.div>

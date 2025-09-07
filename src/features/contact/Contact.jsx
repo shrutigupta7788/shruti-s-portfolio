@@ -11,16 +11,16 @@ const Contact = () => {
       value: "guptashruti7788@gmail.com",
       link: "https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com"
     },
-    {
-      icon: FaPhone,
-      title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
-    },
+    // {
+    //   icon: FaPhone,
+    //   title: "Phone",
+    //   // value: "+1 (555) 123-4567",
+    //   link: "tel:+15551234567"
+    // },
     {
       icon: FaMapMarkerAlt,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "Mira Road, Mumbai",
       link: "#"
     }
   ];

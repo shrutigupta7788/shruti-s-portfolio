@@ -16,8 +16,8 @@ export default {
       { name: "Node.js", level: 70, icon: "🟢" },
       { name: "Express.js", level: 65, icon: "🚂" },
       { name: "MongoDB", level: 60, icon: "🍃" },
-      { name: "PostgreSQL", level: 55, icon: "🐘" },
-      { name: "Firebase", level: 75, icon: "🔥" },
+      // { name: "PostgreSQL", level: 55, icon: "🐘" },
+      // { name: "Firebase", level: 75, icon: "🔥" },
     ]
   },
   tools: {

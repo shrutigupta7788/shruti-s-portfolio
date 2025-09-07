@@ -37,14 +37,18 @@ const App = () => {
 
       <Navbar />
       
-      <main>
+      <main className="">
         <Hero />
         <About />
         <Skills />
         <Projects />
-        <Testimonials />
+        <div className="flex items-center justify-center gap-2 bg-[#101828] px-10">
+        <div className="h-[2px] w-[40%] from-blue-500 to-purple-500 bg-gradient-to-r  rounded-xl top-0"> </div>
+        <p className=" text-white text-center text-[12px]">Thank you for visiting my portfolio.</p>
+        <div className="h-[2px] w-[40%] from-red-500 to-green-500 bg-gradient-to-r  rounded-xl top-10"> </div>
+        </div>
         <Contact />
-      </main>
+      </main> 
       
       <Footer />
 
