@@ -55,7 +55,7 @@ const App = () => {
           <p className=" text-white text-center text-[12px]">
             Thank you for visiting my portfolio.
           </p>
-          <div className="h-[2px] w-[40%] from-red-500 to-green-500 bg-gradient-to-r rounded-xl top-10"></div>
+          <div className="h-[2px] w-[40%] to-purple-500 from-blue-500  bg-gradient-to-r rounded-xl top-10"></div>
         </div>
         <section id="contact">
           <Contact />

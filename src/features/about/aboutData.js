@@ -12,9 +12,9 @@ export default {
     "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I'm always eager to learn new skills and take on challenging projects.",
 
   stats: [
-    { number: "3+", label: "Years Experience" },
-    { number: "50+", label: "Projects Completed" },
-    { number: "100%", label: "Client Satisfaction" },
+    { number: "2+", label: "Years Experience" },
+    { number: "20+", label: "Projects Completed" },
+    { number: "99%", label: "Client Satisfaction" },
     { number: "24/7", label: "Learning Mode" },
   ],
 
