@@ -4,10 +4,10 @@ import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaHeart } from "react-icon
 
 const Footer = () => {
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/yourusername", label: "GitHub" },
-    { icon: FaLinkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-    { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter" },
-    { icon: FaEnvelope, href: "mailto:shruti.dev@example.com", label: "Email" },
+    { icon: FaGithub, href: "https://github.com/shrutigupta7788", label: "GitHub" },
+       { icon: FaLinkedin, href: "https://www.linkedin.com/in/shruti-gupta-169178305", label: "LinkedIn" },
+    // { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter" },
+    { icon: FaEnvelope, href: "https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com", label: "Email" },
   ];
 
   const quickLinks = [
@@ -24,7 +24,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div>
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              Shruti.dev
+              Shruti.portfolio
             </h3>
             <p className="text-gray-300 mb-4 leading-relaxed">
               A passionate Frontend Developer creating beautiful and functional web experiences. 
@@ -69,7 +69,9 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
             <div className="space-y-2 text-gray-300">
-              <p>📧 shruti.dev@example.com</p>
+              <p>
+                📧 <a href="mailto:guptashruti7788@gmail.com" className="hover:text-blue-400 transition-colors duration-300">guptashruti7788@gmail.com</a>
+              </p>
               <p>📱 +1 (555) 123-4567</p>
               <p>📍 San Francisco, CA</p>
             </div>

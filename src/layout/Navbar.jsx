@@ -50,7 +50,7 @@ const Navbar = () => {
           className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
           whileHover={{ scale: 1.05 }}
         >
-          Shruti.dev
+          Shruti.porfolio
         </motion.h1>
         
         <ul className="hidden md:flex gap-8">

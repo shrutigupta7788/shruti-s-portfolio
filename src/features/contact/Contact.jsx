@@ -8,8 +8,8 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       title: "Email",
-      value: "shruti.dev@example.com",
-      link: "mailto:shruti.dev@example.com"
+      value: "guptashruti7788@gmail.com",
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com"
     },
     {
       icon: FaPhone,
@@ -26,9 +26,8 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/yourusername", label: "GitHub" },
-    { icon: FaLinkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-    { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter" },
+    { icon: FaGithub, href: "https://github.com/shrutigupta7788", label: "GitHub" },
+       { icon: FaLinkedin, href: "https://www.linkedin.com/in/shruti-gupta-169178305", label: "LinkedIn" },
   ];
 
   return (
@@ -148,7 +147,7 @@ const Contact = () => {
               Let's work together to bring your ideas to life. I'm excited to hear about your project and see how we can collaborate.
             </p>
             <motion.a
-              href="mailto:shruti.dev@example.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"

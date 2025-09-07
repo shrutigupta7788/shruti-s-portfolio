@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaStar } from "react-icons/fa";
 
-const ProjectCard = ({ 
-  title, 
-  description, 
-  image, 
-  techStack, 
-  liveLink, 
-  githubLink, 
-  featured 
+const ProjectCard = ({
+  title,
+  description,
+  image,
+  techStack,
+  liveLink,
+  githubLink,
+  featured,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -50,9 +50,11 @@ const ProjectCard = ({
         <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {title}
         </h3>
-        
+
         <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed flex-grow">
-          {description}
+          {description.split(" ").length > 10
+            ? description.split(" ").slice(0, 10).join(" ") + "..."
+            : description}
         </p>
 
         {/* Tech Stack - fixed height */}
@@ -82,7 +84,7 @@ const ProjectCard = ({
             <FaExternalLinkAlt className="w-4 h-4" />
             Live Demo
           </motion.a>
-          
+
           <motion.a
             href={githubLink}
             target="_blank"

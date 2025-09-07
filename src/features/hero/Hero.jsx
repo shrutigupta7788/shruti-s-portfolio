@@ -37,10 +37,10 @@ const Hero = () => {
   }, [text, currentIndex, isDeleting, roles]);
 
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/yourusername", label: "GitHub" },
-    { icon: FaLinkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-    { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter" },
-    { icon: FaEnvelope, href: "mailto:your.email@example.com", label: "Email" },
+    { icon: FaGithub, href: "https://github.com/shrutigupta7788", label: "GitHub" },
+    { icon: FaLinkedin, href: "https://www.linkedin.com/in/shruti-gupta-169178305", label: "LinkedIn" },
+    // { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter" },
+    { icon: FaEnvelope, href: "https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com", label: "Email" },
   ];
 
   return (

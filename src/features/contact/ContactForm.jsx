@@ -85,7 +85,7 @@ const ContactForm = () => {
               name="user_email"
               required
               className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-              placeholder="your.email@example.com"
+              placeholder="your.email@example.co"
             />
           </div>
         </div>
