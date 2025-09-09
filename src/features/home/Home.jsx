@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
-import HomeData from "./HomeData"
+import Starfield from "../../shared/components/Starfield";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaDownload } from "react-icons/fa";
+import HomeData from "./HomeData";
 const Home = () => {
   const [text, setText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,6 +13,7 @@ const Home = () => {
     "React Specialist",
     "UI/UX Enthusiast",
     "Problem Solver",
+    "FullStack Developer ",
   ];
 
   useEffect(() => {
@@ -66,6 +68,7 @@ const Home = () => {
     >
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
+        <Starfield starCount={350} speed={0.015} />
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
@@ -128,6 +131,16 @@ const Home = () => {
             className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 font-semibold"
           >
             Get In Touch
+          </motion.a>
+          <motion.a
+            href="/resume.pdf"
+            download
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 font-semibold inline-flex items-center gap-2"
+          >
+            <FaDownload className="w-5 h-5" />
+            Resume
           </motion.a>
         </motion.div>
 

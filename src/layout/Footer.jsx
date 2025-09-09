@@ -82,13 +82,9 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Shruti.dev. All Rights Reserved.
+              © {new Date().getFullYear()} Shruti Gupta All Rights Reserved.
             </p>
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <span>Made with</span>
-              <FaHeart className="w-4 h-4 text-red-500 animate-pulse" />
-              <span>using React & TailwindCSS</span>
-            </div>
+            
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@ export default [
     title: "Sign In & Sign Up Page",
     description: "Start Project Sign In and Sign Up Page.",
     image:
-      "https://res.cloudinary.com/dbqgtkyyq/image/upload/v1757245755/Login_Register_tqdd8u.png",
+      "https://res.cloudinary.com/dbqgtkyyq/image/upload/v1757427515/ss_yajtj4.png",
     techStack: ["HTML", "CSS", "javascript"],
     liveLink: "https://sign-in-sign-up-page-zeta.vercel.app/",
     githubLink: "https://github.com/shrutigupta7788",
