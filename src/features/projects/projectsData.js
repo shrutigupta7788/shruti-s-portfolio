@@ -1,6 +1,6 @@
 export default [
   {
-    title: "Smart File Solutions",
+    title: "Smart File Solutions & Tax Consultant ",
     description:
       "This website I built for SmartFileSolutions company. This project delivers a professional online presence for an Your Trusted Income Tax, accounting and tax consultant company.",
     image:
@@ -33,7 +33,7 @@ export default [
     featured: false,
   },
   {
-    title: "Dhanex – Your Trusted Loan Partner with Easy EMI Calculator Website",
+    title: "Dhanex – Your Trusted Loan Partner with Easy EMI Calculator",
     description: "Dhanex – Trusted loan partner for personal and business needs. Easy approvals, hassle-free EMIs, and a smart EMI calculator for stress-free financial planning.",
     image:
       "https://res.cloudinary.com/dbqgtkyyq/image/upload/v1757433098/Screenshot_2025-09-09_211911_yr7eah.png",
