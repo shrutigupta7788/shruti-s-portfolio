@@ -133,7 +133,7 @@ const Home = () => {
             Get In Touch
           </motion.a>
           <motion.a
-            href="/resume.pdf"
+            href="/Shruti Rajesh Gupta - Resume.pdf.pdf"
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
