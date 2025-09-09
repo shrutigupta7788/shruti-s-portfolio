@@ -32,6 +32,16 @@ export default [
     githubLink: "https://github.com/shrutigupta7788",
     featured: false,
   },
+  {
+    title: "Dhanex – Your Trusted Loan Partner with Easy EMI Calculator Website",
+    description: "Dhanex – Trusted loan partner for personal and business needs. Easy approvals, hassle-free EMIs, and a smart EMI calculator for stress-free financial planning.",
+    image:
+      "https://res.cloudinary.com/dbqgtkyyq/image/upload/v1757433098/Screenshot_2025-09-09_211911_yr7eah.png",
+    techStack: ["HTML", "CSS","Bootstrap", "javascript"],
+    liveLink: "https://dhanex-site.vercel.app/",
+    githubLink: "https://github.com/shrutigupta7788",
+    featured: false,
+  },
 
   {
     title: "Login & Register Page",
@@ -54,4 +64,5 @@ export default [
     githubLink: "https://github.com/shrutigupta7788",
     featured: false,
   },
+  
 ];
