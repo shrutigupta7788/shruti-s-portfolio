@@ -1,10 +1,10 @@
 export default [
   {
-    title: "Leads Platform — Lead Management System",
+    title: "AI Lead Platform — Data Upload & AI Verification",
     description:
-      "Full-stack lead management platform featuring authenticated user access, CSV/JSON/Markdown lead imports, server-side search, pagination, duplicate detection, and MongoDB integration.",
+      "Full-stack lead management platform where users upload lead data files (CSV/JSON) and AI automatically verifies data authenticity to detect real vs fake leads, remove duplicates, and manage verified leads in MongoDB.",
     image: "/leads-platform.png",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "TailwindCSS", "Vite"],
+    techStack: ["React", "AI Verification", "Node.js", "Express", "MongoDB", "TailwindCSS"],
     liveLink: "https://leads-platform-web-phi.vercel.app/",
     githubLink: "https://github.com/shrutigupta7788/leads-platform-web",
     featured: true,
