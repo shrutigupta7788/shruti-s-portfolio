@@ -1,5 +1,15 @@
 export default [
   {
+    title: "DialPhone — Premium Smartphone Store",
+    description:
+      "Full-stack e-commerce web platform for premium smartphones featuring modern UI, product catalog, cart management, filtering, and responsive design.",
+    image: "/dialphone.png",
+    techStack: ["React", "Node.js", "Express", "TailwindCSS", "Framer Motion"],
+    liveLink: "https://dialphone-website.vercel.app/",
+    githubLink: "https://github.com/shrutigupta7788/Dialphone_website",
+    featured: true,
+  },
+  {
     title: "Smart File Solutions & Tax Consultant ",
     description:
       "This website I built for SmartFileSolutions company. This project delivers a professional online presence for an Your Trusted Income Tax, accounting and tax consultant company.",
