@@ -20,7 +20,7 @@ const Contact = () => {
     {
       icon: FaMapMarkerAlt,
       title: "Location",
-      value: "Mira Road, Mumbai",
+      value: "Bhayander East, Mumbai",
       link: "#"
     }
   ];

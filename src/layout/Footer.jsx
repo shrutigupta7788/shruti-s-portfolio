@@ -73,7 +73,7 @@ const Footer = () => {
                 📧 <a href="mailto:guptashruti7788@gmail.com" className="hover:text-blue-400 transition-colors duration-300">guptashruti7788@gmail.com</a>
               </p>
               {/* <p>📱 +1 (555) 123-4567</p> */}
-              <p>📍 Mira Road, Mumbai</p>
+              <p>📍 Bhayander East, Mumbai</p>
             </div>
           </div>
         </div>
