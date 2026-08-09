@@ -1,10 +1,10 @@
 export default [
   {
-    title: "Leads Portal — Markdown Import & AI Auto-Verification",
+    title: "Leads Portal — Markdown Import, AI Verification & CSV Export",
     description:
-      "Full-stack lead management platform featuring Markdown lead table imports, AI Auto-Verification to enrich unverified leads, high-confidence profile matching, search directory, and MongoDB integration.",
+      "Full-stack lead management platform where users import raw Markdown lead tables (from Obsidian or text), run AI Auto-Verification to enrich and validate lead profiles, and export verified results in CSV format.",
     image: "/leads-platform.png",
-    techStack: ["React", "AI Verification", "Node.js", "Express", "MongoDB", "TailwindCSS"],
+    techStack: ["React", "AI Verification", "Markdown & CSV", "Node.js", "Express", "MongoDB"],
     liveLink: "https://leads-platform-web-phi.vercel.app/",
     githubLink: "https://github.com/shrutigupta7788/leads-platform-web",
     featured: true,
