@@ -1,5 +1,15 @@
 export default [
   {
+    title: "Leads Platform — Lead Management System",
+    description:
+      "Full-stack lead management platform featuring authenticated user access, CSV/JSON/Markdown lead imports, server-side search, pagination, duplicate detection, and MongoDB integration.",
+    image: "/leads-platform.png",
+    techStack: ["React", "Node.js", "Express", "MongoDB", "TailwindCSS", "Vite"],
+    liveLink: "https://leads-platform-web-phi.vercel.app/",
+    githubLink: "https://github.com/shrutigupta7788/leads-platform-web",
+    featured: true,
+  },
+  {
     title: "DialPhone — Premium Smartphone Store",
     description:
       "Full-stack e-commerce web platform for premium smartphones featuring modern dark UI, product catalog, cart management, filtering, and responsive design.",
