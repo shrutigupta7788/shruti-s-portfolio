@@ -137,8 +137,10 @@ const Skills = () => {
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-10 h-10 rounded-lg bg-[#0d0f17] border border-zinc-800 flex items-center justify-center transition-transform group-hover:scale-110"
-                        style={{ color: skill.color }}
+                        className={`w-10 h-10 rounded-lg bg-[#0d0f17] border border-zinc-800 flex items-center justify-center transition-transform group-hover:scale-110 ${
+                          skill.isMonochrome ? "text-white" : ""
+                        }`}
+                        style={!skill.isMonochrome ? { color: skill.color } : undefined}
                       >
                         <IconComponent className="w-5 h-5" />
                       </div>
@@ -171,8 +173,10 @@ const Skills = () => {
 
                   {/* Subtle brand glow line */}
                   <div 
-                    className="absolute bottom-0 left-5 right-5 h-[1px] opacity-0 group-hover:opacity-40 transition-opacity duration-300"
-                    style={{ background: skill.color }}
+                    className={`absolute bottom-0 left-5 right-5 h-[1px] opacity-0 group-hover:opacity-40 transition-opacity duration-300 ${
+                      skill.isMonochrome ? "bg-white" : ""
+                    }`}
+                    style={!skill.isMonochrome ? { background: skill.color } : undefined}
                   />
                 </motion.div>
               );

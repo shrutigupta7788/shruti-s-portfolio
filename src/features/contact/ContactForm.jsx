@@ -1,18 +1,27 @@
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { FaPaperPlane, FaCheck, FaExclamationTriangle, FaEnvelope } from "react-icons/fa";
-import emailjs from "@emailjs/browser";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  FaPaperPlane, 
+  FaCheck, 
+  FaExclamationTriangle, 
+  FaEnvelope, 
+  FaInfoCircle 
+} from "react-icons/fa";
+import { sendContactMessage, isEmailJsConfigured } from "./contactService";
 
 const ContactForm = () => {
-  const form = useRef();
+  const form = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'fallback' | 'error' | null
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
     subject: "",
-    message: ""
+    message: "",
   });
+
+  const configured = isEmailJsConfigured();
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -25,30 +34,45 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setErrorMessage("");
+
+    // If EmailJS credentials are not configured yet, fallback smoothly to mailto
+    if (!configured) {
+      const mailtoUrl = `mailto:guptashruti7788@gmail.com?subject=${encodeURIComponent(
+        formData.subject || `Portfolio Inquiry from ${formData.user_name}`
+      )}&body=${encodeURIComponent(
+        `From: ${formData.user_name} (${formData.user_email})\n\n${formData.message}`
+      )}`;
+      window.location.href = mailtoUrl;
+      setSubmitStatus("fallback");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
-      const serviceId = "YOUR_SERVICE_ID";
-      const templateId = "YOUR_TEMPLATE_ID";
-      const publicKey = "YOUR_PUBLIC_KEY";
+      await sendContactMessage({
+        name: formData.user_name,
+        email: formData.user_email,
+        subject: formData.subject,
+        message: formData.message,
+      });
 
-      if (serviceId === "YOUR_SERVICE_ID" || !serviceId) {
-        const mailtoUrl = `mailto:guptashruti7788@gmail.com?subject=${encodeURIComponent(
-          formData.subject || "Portfolio Inquiry from " + formData.user_name
-        )}&body=${encodeURIComponent(
-          `From: ${formData.user_name} (${formData.user_email})\n\n${formData.message}`
-        )}`;
-        window.location.href = mailtoUrl;
-        setSubmitStatus("fallback");
-        return;
-      }
-
-      await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
       setSubmitStatus("success");
-      form.current.reset();
-      setFormData({ user_name: "", user_email: "", subject: "", message: "" });
+      setFormData({
+        user_name: "",
+        user_email: "",
+        subject: "",
+        message: "",
+      });
+      if (form.current) {
+        form.current.reset();
+      }
     } catch (error) {
-      console.error("Email send error:", error);
+      console.error("EmailJS transmission error:", error);
       setSubmitStatus("error");
+      setErrorMessage(
+        error?.text || error?.message || "Failed to dispatch message via EmailJS."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -66,52 +90,85 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <span className="font-mono text-[11px] text-zinc-500">
-          latency: &lt; 24h
-        </span>
+        <div className="flex items-center gap-2">
+          {configured ? (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              EmailJS Connected
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              Mail Client Fallback
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Feedback Messages */}
-      {submitStatus === "success" && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-mono flex items-center gap-3"
-        >
-          <FaCheck className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
-          <span>Success: Message transmitted to Shruti's inbox!</span>
-        </motion.div>
-      )}
-
-      {submitStatus === "fallback" && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 rounded-xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-300 dark:border-cyan-500/30 text-cyan-800 dark:text-cyan-300 text-xs font-mono flex items-center gap-3"
-        >
-          <FaEnvelope className="w-4 h-4 shrink-0 text-cyan-600 dark:text-cyan-400" />
-          <span>Opened your default email client to send this message.</span>
-        </motion.div>
-      )}
-
-      {submitStatus === "error" && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-300 dark:border-rose-500/30 text-rose-700 dark:text-rose-400 text-xs font-mono flex items-center justify-between gap-3"
-        >
-          <div className="flex items-center gap-2">
-            <FaExclamationTriangle className="w-4 h-4 shrink-0 text-rose-600 dark:text-rose-400" />
-            <span>Unable to transmit. Send directly via email:</span>
-          </div>
-          <a
-            href="mailto:guptashruti7788@gmail.com"
-            className="underline font-bold text-zinc-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-300"
+      <AnimatePresence>
+        {submitStatus === "success" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="mb-6 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-400 text-xs font-mono flex items-start gap-3"
           >
-            guptashruti7788@gmail.com
-          </a>
-        </motion.div>
-      )}
+            <FaCheck className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
+            <div>
+              <p className="font-semibold">Message Dispatched Successfully!</p>
+              <p className="text-[11px] text-emerald-700 dark:text-emerald-500 mt-0.5">
+                Your transmission has been delivered directly to Shruti's inbox. Expect a response within 24 hours.
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {submitStatus === "fallback" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="mb-6 p-4 rounded-xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-300 dark:border-cyan-500/30 text-cyan-900 dark:text-cyan-300 text-xs font-mono flex items-start gap-3"
+          >
+            <FaEnvelope className="w-4 h-4 shrink-0 text-cyan-600 dark:text-cyan-400 mt-0.5" />
+            <div>
+              <p className="font-semibold">Opening Email Client</p>
+              <p className="text-[11px] text-cyan-800 dark:text-cyan-400 mt-0.5">
+                Opened your default email application with prefilled message details. To enable background browser transmission, add your EmailJS keys to <code className="px-1 py-0.5 rounded bg-cyan-100 dark:bg-cyan-900/60">.env</code>.
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {submitStatus === "error" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="mb-6 p-4 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-300 dark:border-rose-500/30 text-rose-800 dark:text-rose-400 text-xs font-mono space-y-2"
+          >
+            <div className="flex items-start gap-2.5">
+              <FaExclamationTriangle className="w-4 h-4 shrink-0 text-rose-600 dark:text-rose-400 mt-0.5" />
+              <div>
+                <p className="font-semibold">Transmission Interrupted</p>
+                <p className="text-[11px] text-rose-700 dark:text-rose-500 mt-0.5">
+                  {errorMessage || "Unable to send through EmailJS. Please check your credentials or network."}
+                </p>
+              </div>
+            </div>
+            <div className="pt-2 border-t border-rose-200 dark:border-rose-800/40 text-[11px] flex items-center justify-between">
+              <span>Send directly via email:</span>
+              <a
+                href="mailto:guptashruti7788@gmail.com"
+                className="underline font-bold text-zinc-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-300"
+              >
+                guptashruti7788@gmail.com
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <form ref={form} onSubmit={sendEmail} className="space-y-4">
         <div className="grid sm:grid-cols-2 gap-4">
@@ -182,7 +239,7 @@ const ContactForm = () => {
           <textarea
             id="message"
             name="message"
-            rows="5"
+            rows={5}
             value={formData.message}
             onChange={handleChange}
             required
@@ -209,6 +266,16 @@ const ContactForm = () => {
           )}
         </button>
       </form>
+
+      {/* Helper Note */}
+      {!configured && (
+        <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 flex items-center gap-2 text-[11px] font-mono text-zinc-500">
+          <FaInfoCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400 shrink-0" />
+          <span>
+            Connect keys in <code className="text-zinc-700 dark:text-zinc-300 font-semibold">.env</code> to enable direct background dispatch.
+          </span>
+        </div>
+      )}
     </div>
   );
 };

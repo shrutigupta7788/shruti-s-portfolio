@@ -93,7 +93,7 @@ const SkillsPage = () => {
 
   const radarNext = [
     { name: "TypeScript", icon: SiTypescript, color: "#3178C6", note: "Type safety & scalable enterprise codebase" },
-    { name: "Next.js", icon: SiNextdotjs, color: "#000000", note: "Server-side rendering & hybrid React apps" },
+    { name: "Next.js", icon: SiNextdotjs, isMonochrome: true, note: "Server-side rendering & hybrid React apps" },
     { name: "Docker", icon: SiDocker, color: "#2496ED", note: "Containerized environments & reliable CI" },
   ];
 
@@ -178,8 +178,10 @@ const SkillsPage = () => {
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-[#0d0f17] border border-zinc-200 dark:border-zinc-800 flex items-center justify-center transition-transform group-hover:scale-110"
-                        style={{ color: skill.color }}
+                        className={`w-10 h-10 rounded-lg bg-zinc-100 dark:bg-[#0d0f17] border border-zinc-200 dark:border-zinc-800 flex items-center justify-center transition-transform group-hover:scale-110 ${
+                          skill.isMonochrome ? "text-zinc-900 dark:text-white" : ""
+                        }`}
+                        style={!skill.isMonochrome ? { color: skill.color } : undefined}
                       >
                         <IconComponent className="w-5 h-5" />
                       </div>
@@ -210,9 +212,12 @@ const SkillsPage = () => {
                     {skill.detail}
                   </p>
 
+                  {/* Subtle brand glow line */}
                   <div 
-                    className="absolute bottom-0 left-5 right-5 h-[1px] opacity-0 group-hover:opacity-40 transition-opacity duration-300"
-                    style={{ background: skill.color }}
+                    className={`absolute bottom-0 left-5 right-5 h-[1px] opacity-0 group-hover:opacity-40 transition-opacity duration-300 ${
+                      skill.isMonochrome ? "bg-zinc-900 dark:bg-white" : ""
+                    }`}
+                    style={!skill.isMonochrome ? { background: skill.color } : undefined}
                   />
                 </motion.div>
               );
@@ -254,8 +259,10 @@ const SkillsPage = () => {
               className="p-5 rounded-xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 flex items-start gap-3.5 shadow-sm"
             >
               <div
-                className="w-9 h-9 rounded-lg bg-zinc-100 dark:bg-[#0d0f17] border border-zinc-200 dark:border-zinc-800 flex items-center justify-center shrink-0"
-                style={{ color: tech.color }}
+                className={`w-9 h-9 rounded-lg bg-zinc-100 dark:bg-[#0d0f17] border border-zinc-200 dark:border-zinc-800 flex items-center justify-center shrink-0 ${
+                  tech.isMonochrome ? "text-zinc-900 dark:text-white" : ""
+                }`}
+                style={!tech.isMonochrome ? { color: tech.color } : undefined}
               >
                 <tech.icon className="w-5 h-5" />
               </div>

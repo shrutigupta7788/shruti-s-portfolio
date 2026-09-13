@@ -16,7 +16,7 @@ export default {
     description: "Architecting reliable server endpoints, API routing, and document database storage.",
     skills: [
       { name: "Node.js", level: "Proficient", icon: "SiNodedotjs", color: "#5FA04E", detail: "Event-driven runtime & backend logic" },
-      { name: "Express.js", level: "Proficient", icon: "SiExpress", color: "#E0E0E0", detail: "Middleware, REST routes, error handling" },
+      { name: "Express.js", level: "Proficient", icon: "SiExpress", isMonochrome: true, detail: "Middleware, REST routes, error handling" },
       { name: "MongoDB", level: "Proficient", icon: "SiMongodb", color: "#47A248", detail: "NoSQL collections, queries, aggregation" },
       { name: "RESTful APIs", level: "Advanced", icon: "FaServer", color: "#38BDF8", detail: "CRUD endpoints, status codes, JSON payloads" },
     ]
@@ -26,7 +26,7 @@ export default {
     description: "Modern developer environment, version control, build pipelines, and design handoff.",
     skills: [
       { name: "Git", level: "Advanced", icon: "SiGit", color: "#F05032", detail: "Branching, rebasing, version management" },
-      { name: "GitHub", level: "Advanced", icon: "SiGithub", color: "#F0F6FC", detail: "Remote repos, open source, PRs" },
+      { name: "GitHub", level: "Advanced", icon: "SiGithub", isMonochrome: true, detail: "Remote repos, open source, PRs" },
       { name: "Vite", level: "Advanced", icon: "SiVite", color: "#BD34FE", detail: "Ultra-fast bundler & development server" },
       { name: "Postman", level: "Proficient", icon: "SiPostman", color: "#FF6C37", detail: "API endpoint verification & debugging" },
       { name: "Figma", level: "Proficient", icon: "SiFigma", color: "#F24E1E", detail: "UI wireframing & component specs" },

@@ -42,7 +42,7 @@ const Home = () => {
     { name: "React.js", icon: SiReact, color: "#61DAFB" },
     { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
     { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
-    { name: "Express", icon: SiExpress, color: "#FFFFFF" },
+    { name: "Express", icon: SiExpress, isMonochrome: true },
     { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
     { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
     { name: "Vite", icon: SiVite, color: "#BD34FE" },
@@ -342,8 +342,10 @@ const Home = () => {
                 className="group flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-all duration-200 shadow-sm"
               >
                 <tech.icon
-                  className="w-6 h-6 mb-2 transition-transform duration-200 group-hover:scale-110"
-                  style={{ color: tech.color }}
+                  className={`w-6 h-6 mb-2 transition-transform duration-200 group-hover:scale-110 ${
+                    tech.isMonochrome ? "text-zinc-900 dark:text-white" : ""
+                  }`}
+                  style={!tech.isMonochrome ? { color: tech.color } : undefined}
                 />
                 <span className="font-mono text-[11px] text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors">
                   {tech.name}
