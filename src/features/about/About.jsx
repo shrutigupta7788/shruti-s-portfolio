@@ -1,115 +1,174 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaCode, FaHeart, FaLightbulb } from "react-icons/fa";
+import { 
+  FaGraduationCap, 
+  FaCode, 
+  FaServer, 
+  FaLayerGroup, 
+  FaBolt,
+  FaTerminal,
+  FaCheckCircle
+} from "react-icons/fa";
 import aboutData from "./aboutData";
 
 const About = () => {
+  const highlightIcons = [FaCode, FaServer, FaLayerGroup, FaBolt];
+
   return (
-    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            About Me
+    <section id="about" className="py-24 relative bg-[#090a0f] border-t border-zinc-800/80">
+      {/* Dev Background Grid */}
+      <div className="absolute inset-0 bg-dev-lines opacity-20 pointer-events-none"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+        {/* Section Header */}
+        <div className="flex flex-col items-start mb-16">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 mb-2">
+            <span>// 01.</span>
+            <span className="uppercase tracking-wider">About Me</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
+            Engineering Mindset & Background
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Get to know me better - what drives me in the world of web development.
+          <p className="text-zinc-400 text-base sm:text-lg max-w-2xl">
+            A developer dedicated to crafting robust digital products, balancing high-fidelity frontend design with stable backend systems.
           </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left side - Text content */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-           
-
-          </motion.div>
-
-          {/* Right side - Stats */}
-          
         </div>
 
-        {/* Education Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            Education & Training
+        {/* Developer Stats Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          {aboutData.stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200"
+            >
+              <div className="flex items-baseline justify-between mb-2">
+                <span className="font-mono text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="font-mono text-[11px] text-cyan-400 uppercase">
+                  {stat.suffix}
+                </span>
+              </div>
+              <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Narrative & Core Principles */}
+        <div className="grid lg:grid-cols-12 gap-12 items-start mb-20">
+          {/* Left Column: Bio Details */}
+          <div className="lg:col-span-6 space-y-5">
+            <div className="flex items-center gap-2 font-mono text-xs text-zinc-400 mb-1">
+              <FaTerminal className="w-3.5 h-3.5 text-cyan-400" />
+              <span>developer.philosophy</span>
+            </div>
+
+            {aboutData.bio.map((paragraph, index) => (
+              <p
+                key={index}
+                className="text-zinc-300 text-base leading-relaxed font-normal"
+              >
+                {paragraph}
+              </p>
+            ))}
+
+            <div className="pt-4 flex flex-wrap gap-2 font-mono text-xs">
+              <span className="px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300">
+                #FullStackDevelopment
+              </span>
+              <span className="px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300">
+                #ReactEcosystem
+              </span>
+              <span className="px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300">
+                #CleanCode
+              </span>
+              <span className="px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300">
+                #NodeBackend
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: 4 Core Competencies Cards */}
+          <div className="lg:col-span-6 grid sm:grid-cols-2 gap-4">
+            {aboutData.highlights.map((item, index) => {
+              const Icon = highlightIcons[index % highlightIcons.length];
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="p-5 rounded-xl bg-[#0e1017] border border-zinc-800/80 hover:border-cyan-500/40 transition-all duration-200 flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-cyan-400 mb-4 group-hover:text-cyan-300 group-hover:border-cyan-500/30 transition-all">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <h3 className="text-base font-semibold text-white mb-2 tracking-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Education & Training (Timeline Git Style) */}
+        <div className="pt-10 border-t border-zinc-800/80">
+          <div className="flex items-center gap-2 font-mono text-xs text-cyan-400 mb-3">
+            <span>// 01.1</span>
+            <span className="uppercase tracking-wider">Education & Credentials</span>
+          </div>
+
+          <h3 className="text-2xl font-bold text-white mb-8">
+            Formal Learning & Technical Bootcamps
           </h3>
-          <div className="grid md:grid-cols-2 gap-8">
+
+          <div className="grid md:grid-cols-2 gap-6">
             {aboutData.education.map((edu, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-600"
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="p-6 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700 transition-all flex flex-col justify-between"
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                    <FaGraduationCap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-blue-600 dark:text-blue-400 font-medium mb-2">
-                      {edu.institution}
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">
+                <div>
+                  <div className="flex items-center justify-between gap-4 mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                      {edu.badge}
+                    </span>
+                    <span className="font-mono text-xs text-zinc-500">
                       {edu.year}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {edu.description}
-                    </p>
+                    </span>
                   </div>
+
+                  <h4 className="text-lg font-bold text-white mb-1.5 tracking-tight">
+                    {edu.degree}
+                  </h4>
+                  <p className="text-sm font-medium text-cyan-400/90 mb-3 font-mono">
+                    {edu.institution}
+                  </p>
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    {edu.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
-
-        {/* Interests Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-            Areas of Interest
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {aboutData.interests.map((interest, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                viewport={{ once: true }}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                {interest}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

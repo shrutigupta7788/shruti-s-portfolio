@@ -1,109 +1,108 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt, FaStar } from "react-icons/fa";
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaExternalLinkAlt, FaLock, FaArrowRight } from "react-icons/fa";
 
 const ProjectCard = ({
+  id,
   title,
   description,
   image,
   techStack,
   liveLink,
-  githubLink,
   featured,
+  domain,
+  category,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="group relative bg-white dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden border border-gray-200/80 dark:border-gray-800 flex flex-col h-full"
-    >
-      {/* Featured badge */}
-      {featured && (
-        <div className="absolute top-3.5 right-3.5 z-10">
-          <div className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md shadow-orange-500/20 backdrop-blur-md">
-            <FaStar className="w-3 h-3 text-yellow-200" />
-            Featured
-          </div>
+    <div className="group relative rounded-2xl bg-white dark:bg-[#0d0f17] border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 flex flex-col h-full overflow-hidden shadow-lg shadow-black/5 dark:shadow-black/40 hover:shadow-xl dark:hover:shadow-cyan-500/5">
+      {/* Window Browser Header Bar */}
+      <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-50 dark:bg-[#090b10] border-b border-zinc-200 dark:border-zinc-800/80">
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700/80 group-hover:bg-rose-500/80 transition-colors"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700/80 group-hover:bg-amber-500/80 transition-colors"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700/80 group-hover:bg-emerald-500/80 transition-colors"></div>
         </div>
-      )}
 
-      {/* Image container */}
-      <div className="relative h-52 overflow-hidden flex-shrink-0 bg-gray-900">
-        <motion.img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover object-top"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-300" />
+        {/* Simulated browser address */}
+        <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 font-mono text-[11px] text-zinc-600 dark:text-zinc-400 shadow-xs">
+          <FaLock className="w-2.5 h-2.5 text-zinc-400 dark:text-zinc-500" />
+          <span className="truncate max-w-[140px] sm:max-w-[180px]">{domain || "project.app"}</span>
+        </div>
+
+        {featured ? (
+          <span className="font-mono text-[10px] text-amber-700 dark:text-amber-400 font-medium px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/20">
+            featured
+          </span>
+        ) : (
+          <span className="font-mono text-[10px] text-zinc-500 uppercase">
+            {category || "app"}
+          </span>
+        )}
       </div>
 
-      {/* Content */}
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold mb-2.5 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">
-          {title}
-        </h3>
+      {/* Project Preview Image Container with Link to Detail */}
+      <Link 
+        to={`/projects/${id}`}
+        className="relative h-48 sm:h-52 overflow-hidden bg-zinc-900 block cursor-pointer"
+        title="View Project Case Study"
+      >
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-[#0d0f17] via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <span className="px-3 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-700 text-xs font-mono text-cyan-300 flex items-center gap-1.5 shadow-lg">
+            <span>Read Case Study</span>
+            <FaArrowRight className="w-2.5 h-2.5" />
+          </span>
+        </div>
+      </Link>
 
-        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 flex-grow line-clamp-3">
+      {/* Card Body */}
+      <div className="p-5 sm:p-6 flex flex-col flex-grow">
+        {/* Title */}
+        <Link to={`/projects/${id}`} className="group/title block">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2.5 tracking-tight group-hover/title:text-cyan-600 dark:group-hover/title:text-cyan-300 transition-colors line-clamp-1">
+            {title}
+          </h3>
+        </Link>
+
+        {/* Description */}
+        <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5 flex-grow line-clamp-3 font-normal">
           {description}
         </p>
 
-        {/* Tech Stack */}
-        <div className="mb-6 flex-shrink-0">
-          <div className="flex flex-wrap gap-1.5 min-h-[28px]">
+        {/* Tech Stack Pills */}
+        <div className="mb-6">
+          <div className="flex flex-wrap gap-1.5 min-h-[26px]">
             {techStack.map((tech, index) => (
               <span
                 key={index}
-                className="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200/50 dark:border-blue-800/40 text-xs rounded-md font-medium tracking-wide"
+                className="px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 font-mono text-[11px]"
               >
-                {tech}
+                #{tech}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-3 mt-auto pt-2 border-t border-gray-100 dark:border-gray-800/80">
-          <motion.a
+        {/* Card Action Button: Only Live Demo */}
+        <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800/80">
+          <a
             href={liveLink}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-medium text-sm shadow-md shadow-blue-500/15"
+            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-zinc-900 hover:bg-black dark:text-black dark:bg-white dark:hover:bg-zinc-200 transition-all duration-200 active:scale-98 text-center shadow-sm"
           >
-            <FaExternalLinkAlt className="w-3.5 h-3.5" />
-            Live Demo
-          </motion.a>
-
-          <motion.a
-            href={githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium text-sm"
-          >
-            <FaGithub className="w-4 h-4" />
-            Code
-          </motion.a>
+            <span>Live Demo</span>
+            <FaExternalLinkAlt className="w-3 h-3" />
+          </a>
         </div>
       </div>
-
-      {/* Subtle hover border glow */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        className="absolute inset-0 border border-blue-500/30 rounded-2xl pointer-events-none transition-opacity duration-300"
-      />
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,161 +1,167 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import React, { useState } from "react";
+import { 
+  FaEnvelope, 
+  FaGithub, 
+  FaLinkedin, 
+  FaCopy, 
+  FaCheck,
+  FaTerminal,
+  FaArrowRight
+} from "react-icons/fa";
 import ContactForm from "./ContactForm";
 
 const Contact = () => {
-  const contactInfo = [
-    {
-      icon: FaEnvelope,
-      title: "Email",
-      value: "guptashruti7788@gmail.com",
-      link: "https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com"
-    },
-    // {
-    //   icon: FaPhone,
-    //   title: "Phone",
-    //   // value: "+1 (555) 123-4567",
-    //   link: "tel:+15551234567"
-    // },
-    {
-      icon: FaMapMarkerAlt,
-      title: "Location",
-      value: "Bhayander East, Mumbai",
-      link: "#"
-    }
-  ];
+  const [copied, setCopied] = useState(false);
+  const email = "guptashruti7788@gmail.com";
 
-  const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/shrutigupta7788", label: "GitHub" },
-       { icon: FaLinkedin, href: "https://www.linkedin.com/in/shruti-gupta-169178305", label: "LinkedIn" },
-  ];
+  const copyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Get In Touch
+    <section id="contact" className="py-24 relative bg-[#090a0f] border-t border-zinc-800/80">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+        {/* Section Header */}
+        <div className="flex flex-col items-start mb-16">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 mb-2">
+            <span>// 04.</span>
+            <span className="uppercase tracking-wider">Contact & Connect</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
+            Initiate Communication
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+          <p className="text-zinc-400 text-base sm:text-lg max-w-2xl">
+            Currently open to full-time engineering roles, frontend contracts, and collaborative development opportunities.
           </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                Let's Connect
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                I'm currently available for freelance work and full-time opportunities. 
-                Whether you have a question or just want to say hi, I'll try my best to get back to you!
-              </p>
-            </div>
-
-            {/* Contact Info Cards */}
-            <div className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={index}
-                  href={info.link}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                    <info.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">
-                      {info.title}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {info.value}
-                    </p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h4 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-                Follow Me
-              </h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <ContactForm />
-          </motion.div>
         </div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-4">
-              Ready to Start a Project?
-            </h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Let's work together to bring your ideas to life. I'm excited to hear about your project and see how we can collaborate.
-            </p>
-            <motion.a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Start a Conversation
-            </motion.a>
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          {/* Left Column: Developer Hub & Terminal Info */}
+          <div className="lg:col-span-5 space-y-6">
+            {/* Terminal Status Card */}
+            <div className="rounded-2xl bg-[#0d0f17] border border-zinc-800/80 p-5 shadow-xl shadow-black/40 font-mono text-xs">
+              <div className="flex items-center gap-2 pb-3 mb-3 border-b border-zinc-800/80 text-zinc-500">
+                <FaTerminal className="w-3 h-3 text-cyan-400" />
+                <span>endpoint: /api/shruti/status</span>
+              </div>
+
+              <div className="space-y-1.5 leading-relaxed text-zinc-300">
+                <p className="text-zinc-500">// Terminal Query</p>
+                <p className="text-cyan-400">$ curl -s https://shruti.dev/status</p>
+                <div className="pt-2 text-zinc-400">
+                  <p>&#123;</p>
+                  <p className="pl-4">
+                    <span className="text-purple-400">"availability"</span>:{" "}
+                    <span className="text-emerald-400">"Open for Engineering Roles"</span>,
+                  </p>
+                  <p className="pl-4">
+                    <span className="text-purple-400">"location"</span>:{" "}
+                    <span className="text-zinc-200">"Mumbai, Maharashtra, India"</span>,
+                  </p>
+                  <p className="pl-4">
+                    <span className="text-purple-400">"timezone"</span>:{" "}
+                    <span className="text-zinc-200">"IST (UTC+5:30)"</span>,
+                  </p>
+                  <p className="pl-4">
+                    <span className="text-purple-400">"preferredRoles"</span>: [
+                  </p>
+                  <p className="pl-8 text-cyan-300">
+                    "Frontend Developer", "React Specialist", "Full-Stack Dev"
+                  </p>
+                  <p className="pl-4">],</p>
+                  <p className="pl-4">
+                    <span className="text-purple-400">"responseLatency"</span>:{" "}
+                    <span className="text-amber-400">"&lt; 24 hours"</span>
+                  </p>
+                  <p>&#125;</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Direct Email Card with Copy Trigger */}
+            <div className="p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 flex flex-col justify-between gap-4">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-cyan-400 shrink-0">
+                  <FaEnvelope className="w-4 h-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-mono text-[11px] text-zinc-500 uppercase tracking-wider">
+                    Direct Email
+                  </p>
+                  <a
+                    href="mailto:guptashruti7788@gmail.com"
+                    className="text-sm font-semibold text-white hover:text-cyan-300 transition-colors truncate block"
+                  >
+                    {email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-2 pt-2 border-t border-zinc-800/60">
+                <button
+                  onClick={copyEmail}
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg font-mono text-xs text-zinc-300 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 transition-all"
+                >
+                  {copied ? (
+                    <>
+                      <FaCheck className="w-3 h-3 text-emerald-400" />
+                      <span className="text-emerald-400 font-medium">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaCopy className="w-3 h-3 text-zinc-500" />
+                      <span>Copy Address</span>
+                    </>
+                  )}
+                </button>
+
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=guptashruti7788@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg font-mono text-xs text-cyan-300 bg-cyan-950/40 hover:bg-cyan-900/40 border border-cyan-800/50 transition-all"
+                >
+                  <span>Open Gmail</span>
+                  <FaArrowRight className="w-2.5 h-2.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Social Links Card */}
+            <div className="p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800/80">
+              <p className="font-mono text-[11px] text-zinc-500 uppercase tracking-wider mb-3">
+                Social Profiles & Activity
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href="https://github.com/shrutigupta7788"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white transition-all font-mono text-xs"
+                >
+                  <FaGithub className="w-4 h-4 text-white" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/shruti-gupta-169178305"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white transition-all font-mono text-xs"
+                >
+                  <FaLinkedin className="w-4 h-4 text-[#0a66c2]" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
           </div>
-        </motion.div>
+
+          {/* Right Column: Contact Form */}
+          <div className="lg:col-span-7">
+            <ContactForm />
+          </div>
+        </div>
       </div>
     </section>
   );
