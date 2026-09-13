@@ -10,6 +10,7 @@ import {
   FaLightbulb 
 } from "react-icons/fa";
 import projectsData from "../features/projects/projectsData";
+import ProjectThumbnail from "../features/projects/ProjectThumbnail";
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -114,10 +115,14 @@ const ProjectDetailPage = () => {
         </div>
 
         <div className="relative aspect-video max-h-[500px] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-950">
-          <img
+          <ProjectThumbnail
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover object-top"
+            title={project.title}
+            category={project.category}
+            domain={project.domain}
+            techStack={project.techStack}
+            variant="detail"
           />
         </div>
       </div>

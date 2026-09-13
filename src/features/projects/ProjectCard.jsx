@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaExternalLinkAlt, FaLock, FaArrowRight } from "react-icons/fa";
+import { FaLock, FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
+import ProjectThumbnail from "./ProjectThumbnail";
 
 const ProjectCard = ({
   id,
@@ -46,11 +47,13 @@ const ProjectCard = ({
         className="relative h-48 sm:h-52 overflow-hidden bg-zinc-900 block cursor-pointer"
         title="View Project Case Study"
       >
-        <img
+        <ProjectThumbnail
           src={image}
           alt={title}
-          className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
-          loading="lazy"
+          title={title}
+          category={category}
+          domain={domain}
+          techStack={techStack}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-[#0d0f17] via-transparent to-transparent opacity-80" />
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
